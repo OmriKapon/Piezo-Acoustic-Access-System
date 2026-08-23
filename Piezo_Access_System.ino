@@ -1,11 +1,7 @@
 /*
   Piezo Access-Control Keypad (Chorded Version)
   =============================================
-  Instead of individual buttons, the digit is now based on "chords" -
-  HOW MANY piezo discs are struck simultaneously (within a 150ms window).
-  Valid digits are 1, 2, 3, or 4 (how many of the 4 piezos you strike
-  together). Wiring, LEDs, buzzer, and the hard/soft gate logic are the
-  same as the previous per-pin version.
+ 
 */
 
 #include <Arduino.h>
@@ -20,13 +16,7 @@ const uint8_t NUM_PIEZOS = 4;
 const uint8_t SECRET_CODE[] = {1, 3, 2, 1};
 const uint8_t CODE_LENGTH = sizeof(SECRET_CODE) / sizeof(SECRET_CODE[0]);
 
-// Strike detection settings.
-// Back down to the value your calibration data actually supported (real
-// light taps measured as low as ~45; cross-talk topped out around 2).
-// Chorded strikes tend to land even SOFTER per finger than a focused
-// single tap (force gets split across fingers), so if anything this
-// needs to be LOWER than the single-key value, not higher. Re-check
-// with C mode while actually chording, not single-tapping.
+
 const int STRIKE_THRESHOLD = 25;
 const unsigned long REFRACTORY_MS = 250;      // ignore ringing after a hit
 const unsigned long CHORD_WINDOW_MS = 150;     // window to group simultaneous hits
@@ -190,9 +180,7 @@ void denyAccess() {
 }
 
 // ---------------- CALIBRATE MODE ----------------
-// Prints raw analog values for A0-A3, but ONLY when something actually
-// changes. Use this to check whether ALL fingers in a chord actually
-// clear STRIKE_THRESHOLD together, not just the hardest one.
+
 
 void runCalibrate() {
   static int lastVals[NUM_PIEZOS] = {0, 0, 0, 0};
