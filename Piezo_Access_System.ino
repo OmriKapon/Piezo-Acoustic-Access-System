@@ -17,7 +17,7 @@ const uint8_t SECRET_CODE[] = {1, 3, 2, 1};
 const uint8_t CODE_LENGTH = sizeof(SECRET_CODE) / sizeof(SECRET_CODE[0]);
 
 
-const int STRIKE_THRESHOLD = 25;
+const int STRIKE_THRESHOLD = 50;
 const unsigned long REFRACTORY_MS = 250;      // ignore ringing after a hit
 const unsigned long CHORD_WINDOW_MS = 150;     // window to group simultaneous hits
 const unsigned long ENTRY_TIMEOUT_MS = 4000;  // reset if paused mid-code
@@ -25,7 +25,7 @@ const unsigned long ENTRY_TIMEOUT_MS = 4000;  // reset if paused mid-code
 // Soft (timing) gate - calibrated from real enrollment data.
 float TIMING_MEAN[CODE_LENGTH - 1]  = {1227.4, 908.6, 858.7};
 float TIMING_STDEV[CODE_LENGTH - 1] = {413.0, 253.3, 229.5};
-const float TOLERANCE_K = 2.5f; // how many std-devs still count as "normal"
+const float TOLERANCE_K = 1.5; // how many std-devs still count as "normal"
 
 const uint8_t LED_GREEN = 2;
 const uint8_t LED_RED   = 3;
