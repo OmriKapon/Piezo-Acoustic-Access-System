@@ -109,6 +109,7 @@ chord-based detection is not yet re-validated end-to-end.)
 ## Possible extensions
 
 - Persist calibration to EEPROM instead of re-flashing after enrollment
+- The planned next phase involves adding IoT capabilities and an HMI mobile app. In the event of a 'Soft Gate' failure—where a correct passcode is entered but the rhythmic pattern flags an anomaly—the system will silently trigger a real-time security alert to the owner's device.
 
 
 ## Built with
